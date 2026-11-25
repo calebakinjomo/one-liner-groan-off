@@ -12,9 +12,9 @@ LINE = (
     "the kids yell 'Dad's home!' and honestly, they're not wrong."
 )
 
-OUTPUT_DIR = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+OUTPUT_DIR = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
 
-if not LINE.strip() or "\n" in LINE:
+if not LINE.strip() or "\n" in LINE or "\r" in LINE:
     raise ValueError("entry must be a single non-empty line")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
